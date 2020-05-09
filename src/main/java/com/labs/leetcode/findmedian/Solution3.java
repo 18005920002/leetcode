@@ -1,38 +1,23 @@
 package com.labs.leetcode.findmedian;
-//给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。
-//
-// 请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。 
-//
-// 你可以假设 nums1 和 nums2 不会同时为空。 
-//
-// 
-//
-// 示例 1: 
-//
-// nums1 = [1, 3]
-//nums2 = [2]
-//
-//则中位数是 2.0
-// 
-//
-// 示例 2: 
-//
-// nums1 = [1, 2]
-// nums2 = [3, 4]
-//
-//则中位数是 (2 + 3)/2 = 2.5
-// 
-// Related Topics 数组 二分查找 分治算法
 
+/**
+ * @Description: 找两个有序数组的中位数
+ * @Author: tanyun.zheng
+ * @Date: 2020/5/9
+ */
+public class Solution3 {
 
-//leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+    /*public static void main(String[] args) {
+        int[] arrayA = {1,2};
+        int[] arrayB = {3,4};
+        System.out.println(new Solution2().findMedianSortedArrays(arrayA,arrayB));
+    }*/
+
     public double findMedianSortedArrays(int[] arrayA, int[] arrayB) {
         int m = arrayA.length;
         int n = arrayB.length;
-        int halfLen = (m + n + 1) / 2;
-        //交换数组
-        if(m > n){
+        //交换两个数组
+        if (m > n) {
             int temp[] = arrayA;
             arrayA = arrayB;
             arrayB = temp;
@@ -40,20 +25,17 @@ class Solution {
             m = n;
             n = tmp;
         }
-
-        int iMin=0;
-        int iMax=m;
-        while (iMin<=iMax){
-            int i = (iMin+iMax)/2;
+        //数组半长
+        int halfLen = (m + n + 1) / 2;
+        //搜素区间
+        int iMin = 0, iMax = m;
+        while (iMin <= iMax){
+            int i = (iMin + iMax) / 2;
             int j = halfLen - i;
             System.out.println("iMin="+iMin+" iMax="+iMax+" i="+i+" j="+j);
-            /**
-             *  {31,33,36,41,42};//{23,25,27,41,42};
-             *  {12,15,18,19,21,24,25,28,32,37,43,51,54,62};
-             */
             if(i < iMax && arrayB[j-1]>arrayA[i]){
                 iMin = i + 1;
-            }else if(i>iMin && arrayA[i-1]>arrayB[j]){
+            }else if(i > iMin && arrayA[i-1]>arrayB[j]){
                 iMax = i - 1;
             }else{
                 int maxLeft = 0;
@@ -64,23 +46,21 @@ class Solution {
                 }else{
                     maxLeft = Math.max(arrayA[i-1],arrayB[j-1]);
                 }
-
-                if((m+n)%2 ==1 ){
-                   return maxLeft;
+                if((m+n)%2==1){
+                    return maxLeft;
                 }
-
-                int minRight = 0;
+                int minRight=0;
                 if(i==m){
                     minRight = arrayB[j];
                 }else if(j==n){
                     minRight = arrayA[i];
                 }else{
-                    minRight = Math.min(arrayB[j],arrayA[i]);
+                    minRight = Math.min(arrayA[i],arrayB[j]);
                 }
-                return (maxLeft + minRight) / 2.0;
+                return (maxLeft+minRight)/2.0;
             }
         }
-        return 0d;
+        return 0.0;
     }
 
     public static void main(String[] args) {
@@ -88,7 +68,6 @@ class Solution {
         int[] arrayB = {4,6,8,11,15,16,20,25,26,31,32,36,40,42,45};*/
         int[] arrayA = {31,33,36,41,42};//{23,25,27,41,42};
         int[] arrayB = {12,15,18,19,21,24,25,28,32,37,43,51,54,62};
-        System.out.println(new Solution().findMedianSortedArrays(arrayA,arrayB));
+        System.out.println(new Solution3().findMedianSortedArrays(arrayA,arrayB));
     }
 }
-//leetcode submit region end(Prohibit modification and deletion)
