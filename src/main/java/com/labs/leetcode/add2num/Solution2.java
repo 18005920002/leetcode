@@ -15,6 +15,9 @@ package com.labs.leetcode.add2num;
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+
+import java.util.List;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -23,30 +26,12 @@ package com.labs.leetcode.add2num;
  *     ListNode(int x) { val = x; }
  * }
  */
-class Solution {
+class Solution2 {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int bitSum = l1.val + l2.val;
-        int carry = bitSum/10;
-        ListNode head = new ListNode(bitSum%10);
-        ListNode current = head;
-        while (l1.next!=null || l2.next!=null){
-            int v1 = null==l1.next?0:l1.next.val;
-            int v2 = null==l2.next?0:l2.next.val;
-            bitSum = v1+v2+carry;
-            current.next = new ListNode(bitSum%10);
-            carry = bitSum / 10;
-            current = current.next;
-            if(null!=l1.next){
-                l1 = l1.next;
-            }
-            if(null!=l2.next){
-                l2 = l2.next;
-            }
-        }
-        if(carry>0){
-            current.next = new ListNode(carry);
-        }
-        return head;
+        ListNode head = new ListNode(bitSum % 10);
+        ListNode current = l1;
+        return null;
     }
 
     public static void main(String[] args) {
@@ -58,7 +43,7 @@ class Solution {
         l2.next = new ListNode(1);
         l2.next.next = new ListNode(9);
 
-        ListNode re = new Solution().addTwoNumbers(l1,l2);
+        ListNode re = new Solution2().addTwoNumbers(l1,l2);
         System.out.println(re.val+"->"
                 +re.next.val+"->"
                 +re.next.next.val+"->"
