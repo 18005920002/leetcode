@@ -86,7 +86,8 @@ class Solution {
     public static void main(String[] args) {
         /*int[] arrayA = {32,35,37,41,43};
         int[] arrayB = {4,6,8,11,15,16,20,25,26,31,32,36,40,42,45};*/
-        int[] arrayA = {31,33,36,41,42};//{23,25,27,41,42};
+        int[] arrayA = {31,33,36,41,42};
+        // {23,25,27,41,42};
         int[] arrayB = {12,15,18,19,21,24,25,28,32,37,43,51,54,62};
         System.out.println(new Solution().findMedianSortedArrays(arrayA,arrayB));
     }
