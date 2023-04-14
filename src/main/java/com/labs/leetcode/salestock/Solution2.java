@@ -1,7 +1,7 @@
 package com.labs.leetcode.salestock;
 
 /**
- * @Description:
+ * @Description: 股票卖出注释
  * @Author: tanyun.zheng
  * @Date: 2020/5/16
  */
