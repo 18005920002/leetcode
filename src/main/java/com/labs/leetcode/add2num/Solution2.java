@@ -16,8 +16,6 @@ package com.labs.leetcode.add2num;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-import java.util.List;
-
 /**
  * Definition for singly-linked list.
  * public class ListNode {
